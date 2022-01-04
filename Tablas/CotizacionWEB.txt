@@ -1,0 +1,24 @@
+
+CREATE TABLE [dbo].[CotizacionWEB](
+	[ID] [int] NOT NULL,
+	[Situacion] [varchar](20) NULL,
+	[Estacion] [int] NOT NULL,
+	[RID] [int]  NOT NULL,
+	[Codigo] [varchar](30) NULL,
+	[Articulo] [varchar](20) NULL,
+	[Cantidad] [float] NULL,
+	[Precio] [float] NULL,
+	[Accion] [varchar](20) NULL,
+	[Referencia] [varchar](50) NULL,
+	[Descuento] [money] NULL,
+ CONSTRAINT [priCotizacionWEB] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC,
+	[Estacion] ASC,
+	[RID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+

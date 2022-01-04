@@ -1,0 +1,8 @@
+CREATE VIEW [dbo].[AldenWebTotalCitasEfectivas]
+AS
+select V.ID,V.Mov,V.movid,V.Importe, V.FechaRequerida 
+from venta V inner join Venta V2 on V2.Origen=V.Mov and V2.OrigenID=V.MovID
+where V.mov ='Cita Servicio' and V.FechaRequerida >= convert(char(6), getdate(), 112) + '01'
+and V.Estatus IN ('CONCLUIDO') and V.AnexoID is null and V2.Estatus='CONCLUIDO'
+
+GO

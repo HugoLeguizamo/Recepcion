@@ -1,0 +1,14 @@
+
+CREATE PROCEDURE [dbo].[spAldenWebFiltrarAsesor]
+@NomAsesor VARCHAR(200)
+AS
+BEGIN
+DECLARE @Asesor varchar(50)
+	
+	SELECT @Asesor=Agente FROM Agente WHERE Nombre=@NomAsesor
+
+	UPDATE UsuarioWEB SET Agente=@Asesor
+
+END
+
+GO

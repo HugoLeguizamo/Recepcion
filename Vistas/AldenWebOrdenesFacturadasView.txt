@@ -1,0 +1,7 @@
+CREATE VIEW [dbo].[AldenWebOrdenesFacturadas]
+AS
+select ID,Mov,movid,Importe,ServicioTipoOperacion from venta where mov like 'Factura Svc%'
+and FechaEmision >= convert(char(6), getdate(), 112) + '01'
+and Estatus='CONCLUIDO' and AnexoID is null
+
+GO

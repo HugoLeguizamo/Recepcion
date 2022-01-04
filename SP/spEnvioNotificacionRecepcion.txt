@@ -1,0 +1,35 @@
+///////////
+///////////
+cambiar Agencia
+////////////7
+/////////////
+
+CREATE PROCEDURE [dbo].[spEnvioNotificacionRecepcion]
+@MovId		varchar(100)
+AS
+DECLARE @Correo					varchar(50),
+		@Asunto					varchar(150),
+		@CorreoTexto			nvarchar(max),
+		@CorreoEnvio			varchar(100),
+		@Cliente		VARCHAR(100),
+		@ClienteNom     VARCHAR(100)
+
+SELECT @Cliente = Cliente FROM Venta WHERE MovID=@MovId 
+SELECT @ClienteNom = Nombre FROM CTE WHERE Cliente=@Cliente
+
+SELECT @Asunto='Recepción de unidad con Cita'
+
+SET @CorreoTexto='Le damos la bienvenida a Hyundai Lomas Verdes señor(a) ' + @ClienteNom 
+
+exec msdb.dbo.sp_send_dbmail @profile_name = 'SQLMailAlden', @recipients = 'hleguizamo@alden.mx',
+--@copy_recipients='hleguizamo',
+--@blind_copy_recipients='hleguizamo@alden.mx',
+@body =@CorreoTexto,
+@subject =@Asunto,
+@body_format = 'HTML',
+@importance = 'Normal'
+
+
+
+
+GO
