@@ -1,6 +1,0 @@
-CREATE VIEW [dbo].[AldenWebTotalOrdenes]
-AS
-select ID,Mov,movid,Importe from venta where mov ='Servicio'
-and FechaEmision >= convert(char(6), getdate(), 112) + '01'
-and Estatus='CONCLUIDO' and AnexoID is null
-GO

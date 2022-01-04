@@ -1,7 +1,0 @@
-CREATE VIEW [dbo].[AldenWebNoShow]
-AS
-select ID,Mov,movid,Importe, FechaRequerida from venta where mov ='Cita Servicio'
-and FechaRequerida >= convert(char(6), getdate(), 112) + '01'
-and Estatus IN ('CANCELADO') and AnexoID is null
-
-GO
